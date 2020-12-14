@@ -112,13 +112,53 @@ void show_person(CContacts *contacts)
 	contacts->show_contacts();
 }
 
+#define FD_SETSIZE      1024
+typedef unsigned long   fd_mask;
+#define NBBY    8               /* number of bits in a byte */
+#define NFDBITS (sizeof(fd_mask) * NBBY)        /* bits per mask */
+#define howmany(x, y)   (((x) + ((y) - 1)) / (y))
+
+
+#include "Cbst.h"
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+/*	int n = howmany(FD_SETSIZE, NFDBITS);
+	int b = 1125 / NFDBITS;
 	show_menu();
 	CContacts *contacts = new CContacts();
-	contacts->load_contact();
+	contacts->load_contact();*/
 
-	while (true)
+
+	Cbst *temp = new(Cbst);
+
+	temp->insertNode(10);
+	temp->insertNode(9);
+	temp->insertNode(11);
+	temp->insertNode(8);
+	temp->insertNode(6);
+	temp->insertNode(7);
+	temp->insertNode(9);
+	temp->insertNode(20);
+	temp->insertNode(26);
+	temp->insertNode(15);
+	temp->insertNode(14);
+	temp->insertNode(16);
+	temp->insertNode(25);
+	temp->insertNode(30);
+
+	temp->searchNode(10);
+	temp->searchNode(11);
+	temp->searchNode(6);
+	temp->searchNode(20);
+	temp->searchNode(7);
+	temp->searchNode(15);
+	temp->searchNode(25);
+
+	temp->printTree();
+
+
+/*	while (true)
 	{
 		int my_select = 0;
 		scanf("%d", &my_select);
@@ -144,7 +184,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			break;
 		}
 		show_menu();
-	}
+	}*/
 
 
 exit:
